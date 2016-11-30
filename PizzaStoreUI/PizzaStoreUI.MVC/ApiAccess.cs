@@ -16,7 +16,7 @@ namespace PizzaStoreUI.MVC
         {
             HttpClient httpClient = new HttpClient();
 
-            var httpResponse = httpClient.GetAsync("http://ec2-54-147-132-20.compute-1.amazonaws.com/pizza-store-api/api/" + controllerName + "/").Result;
+            var httpResponse = httpClient.GetAsync("http://34.193.163.157/pizza-store-api/api/" + controllerName + "/").Result;
 
             if (httpResponse.IsSuccessStatusCode)
             {
