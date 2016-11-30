@@ -26,7 +26,7 @@
                 @Html.DisplayName(Model.deliveryAddress)
             </p>
             
-            <form action="/pizza-store-mvc/PizzaStore/OrderConfirmed">
+            <form action="/pizza-store/PizzaStore/OrderConfirmed">
                 @Html.TextBox("subtotal", @Html.DisplayName(Model.subtotal), new { style = "display:none;" })
                 @Html.TextBox("taxes", @Html.DisplayName(Model.taxes), new { style = "display:none;" })
                 @Html.TextBox("total", @Html.DisplayName(Model.total), new { style = "display:none;" })
