@@ -592,7 +592,7 @@
   </wsdl:binding>
   <wsdl:service name="PizzaStoreDataService">
     <wsdl:port name="BasicHttpBinding_IPizzaStoreDataService" binding="tns:BasicHttpBinding_IPizzaStoreDataService">
-      <soap:address location="http://ec2-54-147-132-20.compute-1.amazonaws.com/pizza-store-data-access/PizzaStoreDataService.svc" />
+      <soap:address location="http://34.193.163.157/pizza-store-data-access/PizzaStoreDataService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
