@@ -41,12 +41,12 @@ namespace PizzaStoreUI.MVC.Controllers
                 customerCookie.Expires = DateTime.Now.AddDays(1d);
                 Response.Cookies.Add(customerCookie);
 
-                return Redirect("http://34.193.163.157/pizza-store-mvc/PizzaStore/Order");
+                return Redirect("http://34.193.163.157/pizza-store/PizzaStore/Order");
             }
 
             else
             {
-                return Redirect("http://34.193.163.157/pizza-store-mvc/PizzaStore/Login");
+                return Redirect("http://34.193.163.157/pizza-store/PizzaStore/Login");
             }
         }
 
@@ -62,7 +62,7 @@ namespace PizzaStoreUI.MVC.Controllers
 
             else
             {
-                return Redirect("http://34.193.163.157/pizza-store-mvc/PizzaStore/Login");
+                return Redirect("http://34.193.163.157/pizza-store/PizzaStore/Login");
             }
         }
 
@@ -114,7 +114,7 @@ namespace PizzaStoreUI.MVC.Controllers
             //If there is no cookie found with proper user info, send back to corresponding login screen
             else
             {
-                Response.Redirect("http://34.193.163.157/pizza-store-mvc/PizzaStore/Login");
+                Response.Redirect("http://34.193.163.157/pizza-store/PizzaStore/Login");
             }
 
             var orderPreview = ApiAccess.GetPendingOrderReceipt(pendingOrder);
@@ -152,7 +152,7 @@ namespace PizzaStoreUI.MVC.Controllers
             //If there is no cookie found with proper user info, send back to corresponding login screen
             else
             {
-                Response.Redirect("http://34.193.163.157/pizza-store-mvc/PizzaStore/Login");
+                Response.Redirect("http://34.193.163.157/pizza-store/PizzaStore/Login");
             }
             
 
