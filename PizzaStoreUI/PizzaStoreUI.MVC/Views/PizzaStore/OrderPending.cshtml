@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Confirm Your Order";
+}
+
+@{
+    @model PizzaStoreUI.MVC.Models.OrderReceipt
+    <h2>Confirm Your Order</h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Order Details</h3>
+
+            <p>
+                @Html.DisplayName(Model.size) Pizza<br/>
+                @Html.DisplayName(Model.crust) Crust<br />
+                @Html.DisplayName(Model.sauce) Sauce<br />
+                @Html.DisplayName(Model.cheese) Cheese<br />
+                Toppings: @Html.DisplayName(Model.toppings)<br />
+                <br/>
+
+                Paid with @Html.DisplayName(Model.paymentType)
+                <br />
+                 <br />
+
+                Will be delivered to: <br/>
+                @Html.DisplayName(Model.deliveryAddress)
+            </p>
+            
+            <form action="/pizza-store-mvc/PizzaStore/OrderConfirmed">
+                @Html.TextBox("subtotal", @Html.DisplayName(Model.subtotal), new { style = "display:none;" })
+                @Html.TextBox("taxes", @Html.DisplayName(Model.taxes), new { style = "display:none;" })
+                @Html.TextBox("total", @Html.DisplayName(Model.total), new { style = "display:none;" })
+                @Html.TextBox("paymentType", @Html.DisplayName(Model.paymentType), new { style = "display:none;" })
+
+                <button class="btn" type="submit">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+}
+

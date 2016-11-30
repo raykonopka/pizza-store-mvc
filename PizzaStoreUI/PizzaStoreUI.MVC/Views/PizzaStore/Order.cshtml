@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Order";
+    ViewBag.Message = "Your Custom Pizza";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@{ 
+    @model PizzaStoreUI.MVC.Models.PizzaModel
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>@ViewBag.Message</h3>
+        </div>
+    </div>
+
+    <form action="/pizza-store-mvc/PizzaStore/OrderPending">
+        <div class="row">
+            <div class="col-sm-3">
+                <p>
+                    Choose a Size:<br />
+                    @Html.DropDownList("size", Model.sizeOptions, new { @class = "form-control" })
+                </p>
+
+                <p>
+                    Choose a Crust:<br />
+                    @Html.DropDownList("crust", Model.crustOptions, new { @class = "form-control" })
+                </p>
+
+                <p>
+                    Choose a Sauce:<br />
+                    @Html.DropDownList("sauce", Model.sauceOptions, new { @class = "form-control" })
+                </p>
+
+                <p>
+                    Choose a Cheese Type:<br />
+                    @Html.DropDownList("cheese", Model.cheeseOptions, new { @class = "form-control" })
+                </p>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="pull-left">
+                    <img src="~/Images/pizza-img-1.jpg" class="img-rounded" width="350" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <br />
+                <h3>Toppings</h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <p>
+                    <h4>Vegetables</h4>
+                    @Html.ListBox("vegetableToppings", Model.vegetableToppingOptions, new { @class = "form-control" })<br style="margin-bottom:8px;" />
+                </p>
+            </div>
+
+
+            <div class="col-sm-4">
+                <p>
+                    <h4>Meats</h4>
+                    @Html.ListBox("meatToppings", Model.meatToppingOptions, new { @class = "form-control" })<br style="margin-bottom:8px;" />
+                </p>
+            </div>
+
+            <div class="col-sm-4">
+                <p>
+                    <h4>Additional Cheeses</h4>
+                    @Html.ListBox("additionalCheeseToppings", Model.additionalCheeseToppingOptions, new { @class = "form-control" })<br style="margin-bottom:8px;" />
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <br />
+                <h3>Delivery Address</h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-5">
+                <p>
+                    Street Name:<br />
+                    @Html.TextBox("addressStreet", "", new { @class = "form-control" })<br />
+                </p>
+
+                <p>
+                    State:<br />
+                    @Html.TextBox("addressState", "", new { @class = "form-control" })<br />
+                </p>
+            </div>
+
+
+            <div class="col-sm-5">
+                <p>
+                    City:<br />
+                    @Html.TextBox("addressCity", "", new { @class = "form-control" })<br />
+                </p>
+
+                <p>
+                    Zip Code:<br />
+                    @Html.TextBox("addressZip", "", new { @class = "form-control" })<br />
+                </p>
+            </div>
+
+            <div class="col-sm-2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <br />
+                <h3>Payment</h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-5">
+                <p>
+                    Payment Method:<br />
+                    @Html.DropDownList("paymentMethod", Model.paymentOptions, new { @class = "form-control" })
+                </p>
+
+                <p>
+                    Credit Card (if paying with credit):<br />
+                    @Html.TextBox("creditCard", "", new { @class = "form-control" })<br />
+                </p>
+            </div>
+
+            <div class="col-sm-7">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <button class="btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+}

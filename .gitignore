@@ -1,0 +1,10 @@
+# file extension
+*.config
+
+# file name
+config.json
+[Cc]onfig.json
+
+# folder
+/bin
+/[Bb]in

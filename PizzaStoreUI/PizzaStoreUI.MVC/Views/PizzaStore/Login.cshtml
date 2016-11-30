@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@{
+    <form action="/pizza-store-mvc/PizzaStore/LoginAttempt">
+
+        <p>
+            Username: <br/>
+            @Html.TextBox("username", "" , new { @class = "form-control" })
+        </p>
+
+        <p>
+            Password: <br />
+            @Html.Password("password", "" , new { @class = "form-control" })
+        </p>
+
+        <button type="submit">Submit</button>
+    </form>
+}
+
