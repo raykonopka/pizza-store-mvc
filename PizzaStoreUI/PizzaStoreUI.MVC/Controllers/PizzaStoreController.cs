@@ -182,7 +182,7 @@ namespace PizzaStoreUI.MVC.Controllers
 
         public ActionResult OrderHistory()
         {
-            ViewBag.Message = "Order History";
+            ViewBag.Message = "Order History.";
 
             PizzaStoreDataServiceClient psDataClient = new PizzaStoreDataServiceClient();
             List<OrderDAO> orderHistory = psDataClient.GetOrders().ToList();
