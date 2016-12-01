@@ -166,7 +166,7 @@ namespace PizzaStoreUI.MVC.Controllers
             if (orderSent)
             {
                 ViewBag.Title = "Order Confirmed";
-                ViewBag.Message = "Order Confirmned!";
+                ViewBag.Message = "Order Confirmned";
 
                 return View();
             }
