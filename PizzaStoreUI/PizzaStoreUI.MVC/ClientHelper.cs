@@ -1,4 +1,4 @@
-﻿using PizzaStoreUI.MVC.PizzaStoreDataService;
+﻿using PizzaStoreUI.MVC.DTOModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +18,9 @@ namespace PizzaStoreUI.MVC
         {
             var sizeSelectList = new List<SelectListItem>();
 
-            List<PizzaSizeDAO> sizes = ApiAccess.getItemsFromApi<List<PizzaSizeDAO>>("sizes");
+            List<PizzaSizeDTO> sizes = ApiAccess.getItemsFromApi<List<PizzaSizeDTO>>("sizes");
 
-            foreach (PizzaSizeDAO sz in sizes)
+            foreach (PizzaSizeDTO sz in sizes)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = sz.Name, Value = sz.Name };
                 
@@ -35,10 +35,10 @@ namespace PizzaStoreUI.MVC
         {
             var crustSelectList = new List<SelectListItem>();
 
-            List<CrustTypeDAO> crusts = ApiAccess.getItemsFromApi<List<CrustTypeDAO>>("crusts");
+            List<CrustTypeDTO> crusts = ApiAccess.getItemsFromApi<List<CrustTypeDTO>>("crusts");
 
             
-            foreach (CrustTypeDAO c in crusts)
+            foreach (CrustTypeDTO c in crusts)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = c.Name, Value = c.Name };
                 
@@ -53,10 +53,10 @@ namespace PizzaStoreUI.MVC
         {
             var sauceSelectList = new List<SelectListItem>();
 
-            List<SauceTypeDAO> sauces = ApiAccess.getItemsFromApi<List<SauceTypeDAO>>("sauces");
+            List<SauceTypeDTO> sauces = ApiAccess.getItemsFromApi<List<SauceTypeDTO>>("sauces");
 
             
-            foreach(SauceTypeDAO s in sauces)
+            foreach(SauceTypeDTO s in sauces)
             {
                 SelectListItem selectItem =  new SelectListItem () { Text = s.Name, Value = s.Name };
                 
@@ -71,10 +71,10 @@ namespace PizzaStoreUI.MVC
         {
             var cheeseSelectList = new List<SelectListItem>();
 
-            List<CheeseTypeDAO> cheeses = ApiAccess.getItemsFromApi<List<CheeseTypeDAO>>("cheeses");
+            List<CheeseTypeDTO> cheeses = ApiAccess.getItemsFromApi<List<CheeseTypeDTO>>("cheeses");
 
             
-            foreach (CheeseTypeDAO ch in cheeses)
+            foreach (CheeseTypeDTO ch in cheeses)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = ch.Name, Value = ch.Name };
                
@@ -89,10 +89,10 @@ namespace PizzaStoreUI.MVC
         {
             var vegetableToppingSelectList = new List<SelectListItem>();
 
-            List<ToppingDAO> vegetableToppings = ApiAccess.getItemsFromApi<List<ToppingDAO>>("vegetabletoppings");
+            List<ToppingDTO> vegetableToppings = ApiAccess.getItemsFromApi<List<ToppingDTO>>("vegetabletoppings");
 
             
-            foreach (ToppingDAO tp in vegetableToppings)
+            foreach (ToppingDTO tp in vegetableToppings)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = tp.Name, Value = tp.Name };
                 
@@ -107,10 +107,10 @@ namespace PizzaStoreUI.MVC
         {
             var meatToppingSelectList = new List<SelectListItem>();
 
-            List<ToppingDAO> meatToppings = ApiAccess.getItemsFromApi<List<ToppingDAO>>("meattoppings");
+            List<ToppingDTO> meatToppings = ApiAccess.getItemsFromApi<List<ToppingDTO>>("meattoppings");
 
             
-            foreach (ToppingDAO tp in meatToppings)
+            foreach (ToppingDTO tp in meatToppings)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = tp.Name, Value = tp.Name };
                 
@@ -125,10 +125,10 @@ namespace PizzaStoreUI.MVC
         {
             var additionalCheeseToppingSelectList = new List<SelectListItem>();
 
-            List<ToppingDAO> additionalCheeseToppings = ApiAccess.getItemsFromApi<List<ToppingDAO>>("additionalcheesetoppings");
+            List<ToppingDTO> additionalCheeseToppings = ApiAccess.getItemsFromApi<List<ToppingDTO>>("additionalcheesetoppings");
 
             
-            foreach (ToppingDAO tp in additionalCheeseToppings)
+            foreach (ToppingDTO tp in additionalCheeseToppings)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = tp.Name, Value = tp.Name };
                 
@@ -143,10 +143,10 @@ namespace PizzaStoreUI.MVC
         {
             var toppingPlacementsSelectList = new List<SelectListItem>();
 
-            List<ToppingPlacementDAO> toppingPlacements = ApiAccess.getItemsFromApi<List<ToppingPlacementDAO>>("toppingplacements");
+            List<ToppingPlacementDTO> toppingPlacements = ApiAccess.getItemsFromApi<List<ToppingPlacementDTO>>("toppingplacements");
 
             
-            foreach (ToppingPlacementDAO tpl in toppingPlacements)
+            foreach (ToppingPlacementDTO tpl in toppingPlacements)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = tpl.Type, Value = tpl.Type };
                 
@@ -161,10 +161,10 @@ namespace PizzaStoreUI.MVC
         {
             var paymentMethodsSelectList = new List<SelectListItem>();
 
-            List<PaymentMethodDAO> paymentMethods = ApiAccess.getItemsFromApi<List<PaymentMethodDAO>>("paymentmethods");
+            List<PaymentMethodDTO> paymentMethods = ApiAccess.getItemsFromApi<List<PaymentMethodDTO>>("paymentmethods");
 
             
-            foreach (PaymentMethodDAO pm in paymentMethods)
+            foreach (PaymentMethodDTO pm in paymentMethods)
             {
                 SelectListItem selectItem = new SelectListItem() { Text = pm.Name, Value = pm.Name };
                 

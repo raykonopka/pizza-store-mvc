@@ -28,17 +28,17 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="postOrder">
+      <xs:element name="PostNewOrder">
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PizzaStoreData.DataService" minOccurs="0" name="newOrder" nillable="true" type="q3:OrderDAO" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="postOrderResponse">
+      <xs:element name="PostNewOrderResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="postOrderResult" type="xs:boolean" />
+            <xs:element minOccurs="0" name="PostNewOrderResult" type="xs:boolean" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -369,11 +369,11 @@
   <wsdl:message name="IPizzaStoreDataService_GetPaymentMethods_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPaymentMethodsResponse" />
   </wsdl:message>
-  <wsdl:message name="IPizzaStoreDataService_postOrder_InputMessage">
-    <wsdl:part name="parameters" element="tns:postOrder" />
+  <wsdl:message name="IPizzaStoreDataService_PostNewOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostNewOrder" />
   </wsdl:message>
-  <wsdl:message name="IPizzaStoreDataService_postOrder_OutputMessage">
-    <wsdl:part name="parameters" element="tns:postOrderResponse" />
+  <wsdl:message name="IPizzaStoreDataService_PostNewOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostNewOrderResponse" />
   </wsdl:message>
   <wsdl:message name="IPizzaStoreDataService_GetPizzas_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPizzas" />
@@ -438,9 +438,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPizzaStoreDataService/GetPaymentMethods" message="tns:IPizzaStoreDataService_GetPaymentMethods_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPizzaStoreDataService/GetPaymentMethodsResponse" message="tns:IPizzaStoreDataService_GetPaymentMethods_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="postOrder">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPizzaStoreDataService/postOrder" message="tns:IPizzaStoreDataService_postOrder_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPizzaStoreDataService/postOrderResponse" message="tns:IPizzaStoreDataService_postOrder_OutputMessage" />
+    <wsdl:operation name="PostNewOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPizzaStoreDataService/PostNewOrder" message="tns:IPizzaStoreDataService_PostNewOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPizzaStoreDataService/PostNewOrderResponse" message="tns:IPizzaStoreDataService_PostNewOrder_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPizzas">
       <wsdl:input wsaw:Action="http://tempuri.org/IPizzaStoreDataService/GetPizzas" message="tns:IPizzaStoreDataService_GetPizzas_InputMessage" />
@@ -499,8 +499,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="postOrder">
-      <soap:operation soapAction="http://tempuri.org/IPizzaStoreDataService/postOrder" style="document" />
+    <wsdl:operation name="PostNewOrder">
+      <soap:operation soapAction="http://tempuri.org/IPizzaStoreDataService/PostNewOrder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

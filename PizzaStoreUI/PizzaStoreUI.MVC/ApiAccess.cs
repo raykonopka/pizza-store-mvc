@@ -1,8 +1,10 @@
-﻿using PizzaStoreUI.MVC.Models;
+﻿using PizzaStoreUI.MVC.DTOModels;
+using PizzaStoreUI.MVC.Models;
 using PizzaStoreUI.MVC.PizzaStoreDataService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Web;
@@ -36,37 +38,37 @@ namespace PizzaStoreUI.MVC
         {
             OrderReceipt pendingReceipt = new OrderReceipt();
 
-            List<PizzaSizeDAO> sizes = ApiAccess.getItemsFromApi<List<PizzaSizeDAO>>("sizes");
+            List<PizzaSizeDTO> sizes = ApiAccess.getItemsFromApi<List<PizzaSizeDTO>>("sizes");
             var matchingSizes = sizes.Where(x => x.Name == pendingOrder.size);
             decimal sizePrice = matchingSizes.First().Price;
 
-            List<CrustTypeDAO> crusts = ApiAccess.getItemsFromApi<List<CrustTypeDAO>>("crusts");
+            List<CrustTypeDTO> crusts = ApiAccess.getItemsFromApi<List<CrustTypeDTO>>("crusts");
             var matchingCrusts = crusts.Where(x => x.Name == pendingOrder.crust);
             decimal crustPrice = matchingCrusts.First().Price;
 
-            List<SauceTypeDAO> sauces = ApiAccess.getItemsFromApi<List<SauceTypeDAO>> ("sauces");
+            List<SauceTypeDTO> sauces = ApiAccess.getItemsFromApi<List<SauceTypeDTO>> ("sauces");
             var matchingSauces = sauces.Where(x => x.Name == pendingOrder.sauce);
             decimal saucePrice = matchingSauces.First().Price;
 
-            List<CheeseTypeDAO> cheeses = ApiAccess.getItemsFromApi<List<CheeseTypeDAO>>("cheeses");
+            List<CheeseTypeDTO> cheeses = ApiAccess.getItemsFromApi<List<CheeseTypeDTO>>("cheeses");
             var matchingCheeses = cheeses.Where(x => x.Name == pendingOrder.cheese);
             decimal cheesePrice = matchingCheeses.First().Price;
 
             decimal toppingTotalPrice = 0;
             string toppingString = "";
-            List<ToppingDAO> vegetableToppings = ApiAccess.getItemsFromApi<List<ToppingDAO>>("vegetabletoppings");
+            List<ToppingDTO> vegetableToppings = ApiAccess.getItemsFromApi<List<ToppingDTO>>("vegetabletoppings");
 
                 var matchingVegetableToppings = vegetableToppings.Where(x => x.Name == pendingOrder.vegetableToppings);
                 toppingTotalPrice = toppingTotalPrice + matchingVegetableToppings.First().Price;
                 toppingString = toppingString + " " + pendingOrder.vegetableToppings;
 
-            List<ToppingDAO> meatToppings = ApiAccess.getItemsFromApi<List<ToppingDAO>>("meattoppings");
+            List<ToppingDTO> meatToppings = ApiAccess.getItemsFromApi<List<ToppingDTO>>("meattoppings");
 
                 var matchingMeatToppings = meatToppings.Where(x => x.Name == pendingOrder.meatToppings);
                 toppingTotalPrice = toppingTotalPrice + matchingMeatToppings.First().Price;
                 toppingString = toppingString + " " + pendingOrder.meatToppings;
 
-            List<ToppingDAO> additionalCheeseToppings = ApiAccess.getItemsFromApi<List<ToppingDAO>>("additionalcheesetoppings");
+            List<ToppingDTO> additionalCheeseToppings = ApiAccess.getItemsFromApi<List<ToppingDTO>>("additionalcheesetoppings");
 
 
                 var matchingAdditionalCheeseToppings = additionalCheeseToppings.Where(x => x.Name == pendingOrder.additionalCheeseToppings);
@@ -94,14 +96,22 @@ namespace PizzaStoreUI.MVC
 
 
 
-        public static bool SubmitOrder(OrderDAO newOrder)
+        public static bool SubmitOrder(OrderDTO newOrder)
         {
-            PizzaStoreDataServiceClient psDataClient = new PizzaStoreDataServiceClient();
+            PizzaStoreDataServiceClient pizzaStoreData = new PizzaStoreDataServiceClient();
 
-            return psDataClient.postOrder(newOrder);
+            OrderDAO orderToDAO = new OrderDAO();
+            orderToDAO.Id = newOrder.Id;
+            orderToDAO.Subtotal = newOrder.Subtotal;
+            orderToDAO.Taxes = newOrder.Taxes;
+            orderToDAO.Total = newOrder.Total;
+            orderToDAO.Timestamp = newOrder.Timestamp;
+            orderToDAO.Customer = newOrder.Customer;
+            orderToDAO.PaymentMethod = newOrder.PaymentMethod;
+
+
+            return pizzaStoreData.PostNewOrder(orderToDAO);
         }
-
-
 
 
         public static int getUserId(string username, string password)

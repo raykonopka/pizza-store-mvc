@@ -213,6 +213,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ClientHelper.cs" />
     <Compile Include="Controllers\PizzaStoreController.cs" />
+    <Compile Include="DTOModels\CheeseTypeDTO.cs" />
+    <Compile Include="DTOModels\CrustTypeDTO.cs" />
+    <Compile Include="DTOModels\OrderDTO.cs" />
+    <Compile Include="DTOModels\PaymentMethodDTO.cs" />
+    <Compile Include="DTOModels\PizzaDTO.cs" />
+    <Compile Include="DTOModels\PizzaSizeDTO.cs" />
+    <Compile Include="DTOModels\SauceTypeDTO.cs" />
+    <Compile Include="DTOModels\ToppingCategoryDTO.cs" />
+    <Compile Include="DTOModels\ToppingDTO.cs" />
+    <Compile Include="DTOModels\ToppingListDTO.cs" />
+    <Compile Include="DTOModels\ToppingPlacementDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

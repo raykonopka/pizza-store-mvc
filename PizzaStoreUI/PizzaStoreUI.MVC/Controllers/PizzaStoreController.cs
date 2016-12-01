@@ -1,5 +1,5 @@
-﻿using PizzaStoreUI.MVC.Models;
-using PizzaStoreUI.MVC.PizzaStoreDataService;
+﻿using PizzaStoreUI.MVC.DTOModels;
+using PizzaStoreUI.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,13 +124,13 @@ namespace PizzaStoreUI.MVC.Controllers
 
         public ActionResult OrderConfirmed(string subtotal, string taxes, string total, string paymentType)
         {
-            OrderDAO orderToSend = new OrderDAO();
+            OrderDTO orderToSend = new OrderDTO();
 
             DateTime orderDateTime = DateTime.Now;
             orderToSend.Timestamp = orderDateTime;
 
             
-            List<PaymentMethodDAO> paymentMethods = ApiAccess.getItemsFromApi<List<PaymentMethodDAO>>("paymentmethods");
+            List<PaymentMethodDTO> paymentMethods = ApiAccess.getItemsFromApi<List<PaymentMethodDTO>>("paymentmethods");
             var matchingMethods = paymentMethods.Where(x => x.Name == paymentType);
             int paymentMethodId = matchingMethods.First().Id;
             orderToSend.PaymentMethod = paymentMethodId;
@@ -182,14 +182,31 @@ namespace PizzaStoreUI.MVC.Controllers
 
         public ActionResult OrderHistory()
         {
-            ViewBag.Message = "Order History";
 
-            PizzaStoreDataServiceClient psDataClient = new PizzaStoreDataServiceClient();
-            List<OrderDAO> orderHistory = psDataClient.GetOrders().ToList();
+            //Get UserID
+            HttpCookie myCookie = Request.Cookies["CustomerUserInfo"];
+            int userIdFromCookie;
 
-            ViewBag.Orders(orderHistory);
+            if (myCookie != null)
+            {
+                string[] cookieInfo = myCookie.Value.Split('=');
+                Int32.TryParse(cookieInfo[1], out userIdFromCookie);
 
-            return View();
+
+                List<OrderDTO> orders = ApiAccess.getItemsFromApi<List<OrderDTO>>("orders");
+                List<OrderDTO> matchingOrders = orders.Where(x => x.Customer == userIdFromCookie).ToList();
+
+                ViewBag.Message = matchingOrders.First().Taxes.ToString();
+                return View();
+            }
+
+            //If there is no cookie found with proper user info, send back to corresponding login screen
+            else
+            {
+                ViewBag.Message = "Orders could not be found.";
+                return View();
+            }
+
         }
     }
 }
