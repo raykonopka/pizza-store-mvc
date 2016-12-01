@@ -12,7 +12,7 @@ namespace PizzaStoreUI.MVC
     public class ClientHelper
     {
 
-        #region Selection For Ordering Pizza
+        #region Selection For Ordering Pizzas
 
         public static List<SelectListItem> GetSizes()
         {
