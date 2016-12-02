@@ -193,7 +193,7 @@ namespace PizzaStoreUI.MVC.Controllers
                 /*
                 string[] cookieInfo = myCookie.Value.Split('=');
                 Int32.TryParse(cookieInfo[1], out userIdFromCookie);
-
+                .
                 */
                 userIdFromCookie = 1;
 
