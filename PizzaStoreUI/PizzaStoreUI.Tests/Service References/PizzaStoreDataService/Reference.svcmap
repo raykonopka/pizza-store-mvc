@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c6c94014-c025-4904-acbd-bee0a678bbde" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="44af29da-925a-44b6-944e-b504fa048755" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="http://34.193.163.157/pizza-store-data-access/PizzaStoreDataService.svc?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PizzaStoreDataService.wsdl" MetadataType="Wsdl" ID="b308a936-aa74-4dac-bbf5-099045c5522c" SourceId="1" SourceUrl="http://34.193.163.157/pizza-store-data-access/PizzaStoreDataService.svc?singleWsdl" />
+    <MetadataFile FileName="PizzaStoreDataService.wsdl" MetadataType="Wsdl" ID="1a588640-428b-45c6-bbd3-5fc43113faa6" SourceId="1" SourceUrl="http://34.193.163.157/pizza-store-data-access/PizzaStoreDataService.svc?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

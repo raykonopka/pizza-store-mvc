@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PizzaStoreUI.MVC;
+using PizzaStoreUI.MVC.DTOModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,22 +16,20 @@ namespace PizzaStoreUI.Tests
         //Test After API Is Published
 
         [Fact]
-        public void Test_LoadOrderPage()
+        public void Test_SubmitOrder()
         {
-            HttpClient httpClient = new HttpClient();
+            OrderDTO orderToSend = new OrderDTO();
 
-            var actual = httpClient.GetAsync("http://34.193.163.157/pizza-store-mvc/PizzaStore/Order").Result;
+            orderToSend.PaymentMethod = 1;
+            orderToSend.Customer = 1;
+            orderToSend.Subtotal = 8;
+            orderToSend.Taxes = 1;
+            orderToSend.Total = 9;
+            orderToSend.Timestamp = DateTime.Now;
 
-            if (actual.IsSuccessStatusCode)
-            {
-                Debug.WriteLine("Order Page Sucessfully Loaded.");
-            }
-            else
-            {
-                Debug.WriteLine("Order Page Failed To Load.");
-            }
+            var actual = ApiAccess.SubmitOrder(orderToSend);
 
-            Assert.True(actual.IsSuccessStatusCode);
+            Assert.True(actual);
         }
 
     }

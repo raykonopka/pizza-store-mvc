@@ -101,7 +101,6 @@ namespace PizzaStoreUI.MVC
             PizzaStoreDataServiceClient pizzaStoreData = new PizzaStoreDataServiceClient();
 
             OrderDAO orderToDAO = new OrderDAO();
-            orderToDAO.Id = newOrder.Id;
             orderToDAO.Subtotal = newOrder.Subtotal;
             orderToDAO.Taxes = newOrder.Taxes;
             orderToDAO.Total = newOrder.Total;
@@ -111,6 +110,7 @@ namespace PizzaStoreUI.MVC
 
 
             return pizzaStoreData.PostNewOrder(orderToDAO);
+
         }
 
 
