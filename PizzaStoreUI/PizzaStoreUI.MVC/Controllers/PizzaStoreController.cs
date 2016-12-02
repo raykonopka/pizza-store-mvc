@@ -194,10 +194,19 @@ namespace PizzaStoreUI.MVC.Controllers
 
 
                 List<OrderDTO> orders = ApiAccess.getItemsFromApi<List<OrderDTO>>("orders");
-                List<OrderDTO> matchingOrders = orders.Where(x => x.Customer == userIdFromCookie).ToList();
+                var matchingOrders = orders.Where(x => x.Customer == userIdFromCookie);
 
-                ViewBag.Message = matchingOrders.First().Taxes.ToString();
-                return View();
+                if (matchingOrders.Count() > 0)
+                {
+                    ViewBag.Message = "Order Taxes: " + matchingOrders.First().Taxes.ToString();
+                    return View();
+                }
+ 
+                else
+                {
+                    ViewBag.Message = "Orders could not be found for this user.";
+                    return View();
+                }
             }
 
             //If there is no cookie found with proper user info, send back to corresponding login screen
