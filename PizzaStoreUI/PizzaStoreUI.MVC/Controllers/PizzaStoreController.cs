@@ -1,5 +1,6 @@
 ﻿using PizzaStoreUI.MVC.DTOModels;
 using PizzaStoreUI.MVC.Models;
+using PizzaStoreUI.MVC.PizzaStoreDataService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -193,7 +194,7 @@ namespace PizzaStoreUI.MVC.Controllers
                 Int32.TryParse(cookieInfo[1], out userIdFromCookie);
 
 
-                List<OrderDTO> orders = ApiAccess.getItemsFromApi<List<OrderDTO>>("orders");
+                List<OrderDAO> orders = ApiAccess.getItemsFromApi<List<OrderDAO>>("orders");
                 var matchingOrders = orders.Where(x => x.Customer == userIdFromCookie);
 
                 if (matchingOrders.Count() > 0)
@@ -212,7 +213,7 @@ namespace PizzaStoreUI.MVC.Controllers
             //If there is no cookie found with proper user info, send back to corresponding login screen
             else
             {
-                ViewBag.Message = "Orders could not be found.";
+                ViewBag.Message = "User not logged in.";
                 return View();
             }
 
