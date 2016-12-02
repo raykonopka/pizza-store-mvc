@@ -190,13 +190,16 @@ namespace PizzaStoreUI.MVC.Controllers
 
             if (myCookie != null)
             {
+                /*
                 string[] cookieInfo = myCookie.Value.Split('=');
                 Int32.TryParse(cookieInfo[1], out userIdFromCookie);
 
+                */
+                userIdFromCookie = 1;
 
                 List<OrderDAO> orders = ApiAccess.getItemsFromApi<List<OrderDAO>>("orders");
                 var matchingOrders = orders.Where(x => x.Customer == userIdFromCookie);
-
+                
                 if (matchingOrders.Count() > 0)
                 {
                     ViewBag.Message = "Order Taxes: " + matchingOrders.First().Taxes.ToString();
